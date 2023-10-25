@@ -1,0 +1,19 @@
+---
+apiVersion: pkg.crossplane.io/v1beta1
+kind: Function
+metadata:
+  name: function-add-k8s-labels-annotations # Use your Function's name!
+  annotations:
+    # xrender will try to talk to your Function at localhost:9443
+    xrender.crossplane.io/runtime: Development
+    xrender.crossplane.io/runtime-development-target: localhost:9443
+---
+apiVersion: pkg.crossplane.io/v1beta1
+kind: Function
+metadata:
+  name: function-patch-and-transform
+  annotations:
+    xrender.crossplane.io/runtime: Docker
+    xrender.crossplane.io/runtime-docker-cleanup: Orphan
+spec:
+  package: xpkg.upbound.io/crossplane-contrib/function-patch-and-transform:v0.1.4
