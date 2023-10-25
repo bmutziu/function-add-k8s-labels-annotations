@@ -1,11 +1,11 @@
 FUNCTION_NAME := function-add-k8s-labels-annotations
 
-DOCKER_REGISTRY := steve
+DOCKER_REGISTRY := bmutziu
 DOCKER_TAG := v0.0.1
 
 # Local Build 
 build-local:
-	go build main.go -o function-add-labels-annotations
+	go build -o function-add-labels-annotations ./main.go ./fn.go
 
 build: docker-build
 

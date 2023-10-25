@@ -1,4 +1,4 @@
-module github.com/crossplane/function-template-go
+module github.com/bmutziu/function-add-k8s-labels-annotations
 
 go 1.20
 

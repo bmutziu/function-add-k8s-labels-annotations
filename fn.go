@@ -11,7 +11,7 @@ import (
 	"github.com/crossplane/function-sdk-go/request"
 	"github.com/crossplane/function-sdk-go/response"
 
-	"github.com/stevendborrelli/function-add-k8s-labels-annotations/input/v1beta1"
+	"github.com/bmutziu/function-add-k8s-labels-annotations/input/v1beta1"
 )
 
 // Function returns whatever response you ask it to.

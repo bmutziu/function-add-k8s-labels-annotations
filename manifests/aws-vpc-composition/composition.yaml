@@ -24,7 +24,7 @@ spec:
           spec:
             forProvider:
               region: eu-west-1
-              cidrBlock: 192.168.0.0/16
+              cidrBlock: 192.168.169.0/24
               enableDnsSupport: true
               enableDnsHostnames: true
               tags:
