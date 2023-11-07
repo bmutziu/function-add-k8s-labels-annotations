@@ -3,7 +3,7 @@ kind: Function
 metadata:
   name: function-add-k8s-labels-annotations
 spec:
-  package: index.docker.io/bmutziu/function-add-k8s-labels-annotations:v0.0.1
+  package: index.docker.io/bmutziu/function-add-k8s-labels-annotations:v0.0.2
 ---
 apiVersion: pkg.crossplane.io/v1beta1
 kind: Function

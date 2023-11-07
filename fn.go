@@ -42,6 +42,12 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1beta1.RunFunctionRequ
 		return rsp, nil
 	}
 
+	in.Labels["xfn-owner"] += "-team"
+	in.Labels["xfn-provisioned-by"] = "upbound-" + in.Labels["xfn-provisioned-by"]
+	in.Annotations["added-by-xfn"] += "-euro"
+	f.log.Info("Actual ", "labels: ", in.Labels, "1st", in.Labels["xfn-owner"])
+	f.log.Info("Actual ", "annotations: ", in.Annotations)
+
 	// TODO: Add your Function logic here!
 	//
 	// Take a look at function-sdk-go for some utilities for working with req

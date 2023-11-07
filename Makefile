@@ -1,7 +1,7 @@
 FUNCTION_NAME := function-add-k8s-labels-annotations
 
 DOCKER_REGISTRY := bmutziu
-DOCKER_TAG := v0.0.1
+DOCKER_TAG := v0.0.2
 
 # Local Build 
 build-local:
