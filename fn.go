@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/crossplane/crossplane-runtime/pkg/errors"
 	"github.com/crossplane/crossplane-runtime/pkg/logging"
@@ -42,6 +43,7 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1beta1.RunFunctionRequ
 		return rsp, nil
 	}
 
+	// Mutate the labels and annotations
 	in.Labels["xfn-owner"] += "-team"
 	in.Labels["xfn-provisioned-by"] = "upbound-" + in.Labels["xfn-provisioned-by"]
 	in.Annotations["added-by-xfn"] += "-euro"
@@ -63,6 +65,27 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1beta1.RunFunctionRequ
 
 	for name, dr := range desired {
 		f.log.Debug("Desired Resource", "composed-resource-name", name)
+
+		region, err := dr.Resource.GetString("spec.forProvider.region")
+		if err != nil {
+			response.Fatal(rsp, errors.Wrapf(err, "cannot get values", req))
+			return rsp, nil
+		}
+		f.log.Debug("Region ", "is: ", region)
+
+		if name == "platformref-vpc" {
+			tags, err := dr.Resource.GetStringObject("spec.forProvider.tags")
+			if err != nil {
+				response.Fatal(rsp, errors.Wrapf(err, "cannot get values", req))
+				return rsp, nil
+			}
+			f.log.Debug("Tags ", "are :", tags)
+			for key, value := range tags {
+				fmt.Println(key, "->", value)
+			}
+			f.log.Debug("Tags ", "for Owner", tags["Owner"])
+		}
+
 		meta.AddLabels(dr.Resource, in.Labels) // Crossplane-runtime helper
 		meta.AddAnnotations(dr.Resource, in.Annotations)
 	}
