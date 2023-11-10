@@ -4,4 +4,7 @@ metadata:
   name: network-test-functions
   namespace: default
 spec:
-  id: network-test-functions
+  id: provider-kubernetes
+  namespaces:
+    - dev
+    - production

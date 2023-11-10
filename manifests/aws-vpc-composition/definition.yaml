@@ -24,7 +24,11 @@ spec:
                 id:
                   type: string
                   description: ID of this Network that other objects will use to refer to it.
+                namespaces:
+                  type: array
+                  items:
+                    type: string
+                    description: Namespaces to be claimed.  
               required:
                 - id
-
-
+                - namespaces  
